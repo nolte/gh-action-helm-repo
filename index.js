@@ -7,6 +7,7 @@ const https = require('https');
 
 async function main() {
     const repo = core.getInput('repo', { required: true });
+    const name = core.getInput('name', { required: true });
     let myURL = new URL(repo + '/index.yaml');
     let body = [];
     https.request(myURL, res => {
@@ -16,7 +17,7 @@ async function main() {
     }).end()
 
     const doc = yaml.safeLoad(Buffer.concat(body).toString(), 'utf8');
-    console.log(doc);
+    console.log(doc["entries"][name][0].version);
     console.log("Test App")
 
 
