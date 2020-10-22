@@ -14,9 +14,9 @@ async function main() {
         // XXX verify HTTP 200 response
         res.on('data', chunk => body.push(chunk));
         res.on('end', () => yaml.safeLoadAll(Buffer.concat(body).toString(), function (doc) {
-            console.log(doc);
             const latestVersion = doc["entries"][name][0].version
             core.setOutput('version', latestVersion);
+            console.log("Latest Version From chart " + latestVersion)
         }));
     }).end()
     console.log("Test App")
