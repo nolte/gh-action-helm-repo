@@ -13,11 +13,12 @@ async function main() {
     https.request(myURL, res => {
         // XXX verify HTTP 200 response
         res.on('data', chunk => body.push(chunk));
-        res.on('end', () => console.log(Buffer.concat(body).toString()));
+        res.on('end', () => yaml.safeLoadAll(Buffer.concat(body).toString(), function (doc) {
+            console.log(doc);
+            const latestVersion = doc["entries"][name][0].version
+            core.setOutput('version', latestVersion);
+        }));
     }).end()
-
-    const doc = yaml.safeLoad(Buffer.concat(body).toString(), 'utf8');
-    console.log(doc["entries"][name][0].version);
     console.log("Test App")
 
 
