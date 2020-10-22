@@ -3,7 +3,8 @@
     "dependencies": {
         "@actions/core": "^1.2.0",
         "@actions/exec": "^1.0.1",
-        "@actions/github": "^1.1.0"
+        "@actions/github": "^1.1.0",
+        "js-yaml": "^3.14.0"
     },
     "devDependencies": {
         "@zeit/ncc": "^0.20.5",

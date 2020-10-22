@@ -19,12 +19,16 @@ jobs:
       #    mkdir -p /tmp/action_content
       #    cp action.yml /tmp/action_content/action.yml
       #    cp -r dist /tmp/action_content/
-
+      - uses: azure/setup-helm@v1
+        #with:
+        #  version: "<version>" # default is latest stable
+        id: install
       - name: Create TODO
         uses: ./
         with:
-          repo: MC
-          name: MC
+          repo: https://mojo2600.github.io/pihole-kubernetes/
+          name: pihole
+      - run: env
 #      - name: upload the action content
 #        uses: actions/upload-artifact@v1
 #        with:
