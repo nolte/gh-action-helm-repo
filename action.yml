@@ -5,8 +5,11 @@ inputs:
     description: Chart Repo URL
     required: true
   name:
-    description: Chart Repo URL
+    description: Chart name
     required: true
+outputs:
+  version: # id of the output
+    description: "Latest version"
 runs:
   using: "node12"
   main: "./dist/index.js"
