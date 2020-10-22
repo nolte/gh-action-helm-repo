@@ -24,11 +24,13 @@ jobs:
         #  version: "<version>" # default is latest stable
         id: install
       - name: Create TODO
+        id: chartinfos
         uses: ./
         with:
           repo: https://mojo2600.github.io/pihole-kubernetes/
           name: pihole
       - run: env
+      - run: echo "${{ steps.chartinfos.outputs.version }}"
 #      - name: upload the action content
 #        uses: actions/upload-artifact@v1
 #        with:
