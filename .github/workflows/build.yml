@@ -29,6 +29,12 @@ jobs:
         with:
           repo: https://mojo2600.github.io/pihole-kubernetes/
           name: pihole
+      - name: Create TODO
+        id: chartinfoshome
+        uses: ./
+        with:
+          repo: https://k8s-at-home.com/charts
+          name: home-assistant
       - run: env
       - run: echo "${{ steps.chartinfos.outputs.version }}"
 #      - name: upload the action content
