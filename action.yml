@@ -1,0 +1,12 @@
+name: gh-action-helm-repo
+description: Github Action Workflow Playground
+inputs:
+  repo:
+    description: Chart Repo URL
+    required: true
+  name:
+    description: Chart Repo URL
+    required: true
+runs:
+  using: "node12"
+  main: "./dist/index.js"

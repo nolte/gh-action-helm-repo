@@ -1,0 +1,32 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm install
+      - run: npm run package
+      #- run: |
+      #    mkdir -p /tmp/action_content
+      #    cp action.yml /tmp/action_content/action.yml
+      #    cp -r dist /tmp/action_content/
+
+      - name: Create TODO
+        uses: ./
+        with:
+          repo: MC
+          name: MC
+#      - name: upload the action content
+#        uses: actions/upload-artifact@v1
+#        with:
+#          path: "/tmp/action_content"
+#          name: "dist"
